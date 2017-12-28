@@ -8,7 +8,7 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
 m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
-J = 0;
+% J = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -17,11 +17,12 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+hyp = sigmoid(X*theta);
+theta_mod = [0;theta(2:end)];
 
-
-
-
-
+reg_factor = (lambda/(2*m))*(theta_mod'*theta_mod);
+J = ( (1/m) * ((-y)'*log(hyp) - (1-y)'*log(1-hyp)) ) + reg_factor;
+grad = (1/m)*((X'*(hyp-y)) + (lambda*theta_mod));
 % =============================================================
 
 end
