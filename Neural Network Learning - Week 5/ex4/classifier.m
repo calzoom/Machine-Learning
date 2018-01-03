@@ -1,4 +1,4 @@
-function vectorImage = imageTo20x20Gray(fileName, cropPercentage, rotStep)
+function vectorImage = classifier(fileName, cropPercentage, rotStep)
 
 %IMAGETO20X20GRAY display reduced image and converts for digit classification
 
